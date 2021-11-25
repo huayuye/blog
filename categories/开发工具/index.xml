@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Series on bd</title>
-    <link>/series/</link>
-    <description>Recent content in Series on bd</description>
+    <title>开发工具 on bd</title>
+    <link>/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 开发工具 on bd</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Thu, 25 Nov 2021 09:46:00 +0800</lastBuildDate>
     
-        <atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
