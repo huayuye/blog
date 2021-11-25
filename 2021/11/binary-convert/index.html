@@ -2,7 +2,8 @@
 <html lang="zh">
   <head>
     <title>
-        冰灯</title>
+        Binary Convert(二进制之转换) - 冰灯
+      </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -19,25 +20,29 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    
+    <meta name="description" content="关于本人之前遇到的一个位运算问题，简单的作了下分析，如有错误，望指正。 /** * 二进制 逢二进一 * 八进制 逢八进一 * 十进制 逢十进一 * 十六进制 逢十六进一" />
     <meta name="generator" content="Hugo 0.89.4 with theme pure" />
-    <title>冰灯</title>
+    <title>Binary Convert(二进制之转换) - 冰灯</title>
     
-    <link rel="alternate" type="application/rss+xml" href="https://huayuye.github.io/blog/posts/index.xml" title="冰灯" />
     
     <link rel="stylesheet" href="https://huayuye.github.io/blog/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://huayuye.github.io/blog/posts/" />
+    <meta property="og:title" content="Binary Convert(二进制之转换)" />
+<meta property="og:description" content="关于本人之前遇到的一个位运算问题，简单的作了下分析，如有错误，望指正。 /** * 二进制 逢二进一 * 八进制 逢八进一 * 十进制 逢十进一 * 十六进制 逢十六进一" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huayuye.github.io/blog/2021/11/binary-convert/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-25T18:30:35+08:00" />
+<meta property="article:modified_time" content="2021-11-25T18:30:35+08:00" />
 
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
+<meta itemprop="name" content="Binary Convert(二进制之转换)">
+<meta itemprop="description" content="关于本人之前遇到的一个位运算问题，简单的作了下分析，如有错误，望指正。 /** * 二进制 逢二进一 * 八进制 逢八进一 * 十进制 逢十进一 * 十六进制 逢十六进一"><meta itemprop="datePublished" content="2021-11-25T18:30:35+08:00" />
+<meta itemprop="dateModified" content="2021-11-25T18:30:35+08:00" />
+<meta itemprop="wordCount" content="1231">
+<meta itemprop="keywords" content="二进制," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Binary Convert(二进制之转换)"/>
+<meta name="twitter:description" content="关于本人之前遇到的一个位运算问题，简单的作了下分析，如有错误，望指正。 /** * 二进制 逢二进一 * 八进制 逢八进一 * 十进制 逢十进一 * 十六进制 逢十六进一"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -250,48 +255,257 @@
 
     
     
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
 
-<main class="main" role="main">
-    <article class="content article article-archives article-type-list" itemscope="">
-        <header class="article-header">
-            <h1 itemprop="title">Posts</h1>
-            <p class="text-muted">共 6 篇文章</p>
-        </header>
-        <div class="article-body">
-                        <section class="panel panel-default b-no">
-                            <div class="panel-heading" role="tab">
-                                <h3 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse2021" aria-expanded="true">
-                                        <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-                                        &nbsp;2021
-                                    </a>
-                                </h3>
-                            </div>
-                            <div id="collapse2021" class="panel-collapse collapse in" role="tabpanel"
-                                aria-labelledby="heading2021">
-                                <div class="panel-body">
-                                    <div class="collection"><a href="https://huayuye.github.io/blog/2021/11/java-meta-annotation/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 18:43:08 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Java Meta Annotation
-</a><a href="https://huayuye.github.io/blog/2021/11/jdk-tool/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 18:37:20 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Jdk Tool
-</a><a href="https://huayuye.github.io/blog/2021/11/binary-convert/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 18:30:35 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Binary Convert(二进制之转换)
-</a><a href="https://huayuye.github.io/blog/2021/11/mybatis-where/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 18:20:06 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Mybatis Where的坑
-</a><a href="https://huayuye.github.io/blog/2021/11/gradle-vm/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 09:46:00 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Gradle Vm
-</a><a href="https://huayuye.github.io/blog/2021/11/hello/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-19 17:16:59 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-19
-    </time>Hello
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/blog/2021/11/binary-convert/"
+    >Binary Convert(二进制之转换)</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://huayuye.github.io/blog/2021/11/binary-convert/" class="article-date">
+  <time datetime="2021-11-25 18:30:35 &#43;0800 CST" itemprop="datePublished">2021-11-25</time>
 </a>
-        </div></div></div></section>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/blog/categories/%E7%AE%97%E6%B3%95/"> 算法 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/blog/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"> 二进制 </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1231字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>关于本人之前遇到的一个位运算问题，简单的作了下分析，如有错误，望指正。</p>
+<pre><code>/**
+     * 二进制 逢二进一
+     * 八进制 逢八进一
+     * 十进制 逢十进一
+     * 十六进制 逢十六进一 A(10) B(11) C(12) D(13) E(14) F(15)
+     */
+
+
+    /**
+     * 十进制 转 二进制
+     *将 十进制数 除以 2 ，取每次的余数 再将余数倒排 即为对应的二进制
+     */
+
+
+    /**
+     * 十进制 转 八进制
+     * 将 十进制数 除以 8 ，取每次的余数 再将余数倒排 即为对应的八进制
+     */
+
+
+    /**
+     * 十进制 转 十六进制
+     * 将 十进制数 除以 16 ，取每次的余数 再将余数倒排 即为对应的十六进制
+     */
+
+
+    /**
+     * 二进制 转 十进制
+     * 将二进制的每个权重值 相加 即为十进制
+     * 如 1 0110-&gt; 1*2^4+0*2^3+1*2^2+1*2^1+0*2^0
+     */
+
+    /**
+     * 二进制 转 八进制
+     * 将二进制从右往左 每三位（权重值） 表示一位八进制数，不足时 空位补0
+     */
+
+    /**
+     * 二进制 转 十六进制
+     * 将二进制从右往左 每四位（权重值） 表示一位十六进制数，不足时 空位补0
+     */
+
+
+    /**
+     * 八进制 转 二进制
+     * 将每位八进制数 用三位二进制数（必须是三位，不足时，左边补0）表示
+     * 或将每位八进制数 除以2 取每次余数 再倒排 即为对应二进制数
+     */
+
+    /**
+     * 八进制 转 十进制
+     * 将每位八进制数 按权重值 相加 即为对应的十进制
+     * 如 226  -&gt; 2*8^2+2*8^1+6*8^0
+     */
+
+    /**
+     * 八进制 转 十六进制
+     * 可借助 十进制 或者 二进制 过渡
+     */
+
+    /**
+     * 十六进制 转 二进制
+     * 将每位十六进制数 用四位二进制数（必须是四位，不足时，左边补0）表示
+     * 或将每位十六进制数 除以2 取每次余数 再倒排 即为对应二进制数
+     * 96 -&gt; 1001 0110
+     */
+
+    /**
+     * 十六进制 转 十进制
+     * 将每位十六进制数 按权重值 相加 即为对应的十进制
+     * 如 96  -&gt; 9*16^1+6*16^0
+     */
+
+    /**
+     * 十六进制 转 八进制
+     * 可借助 十进制 或者 二进制 过渡
+     */
+
+    /**
+     *
+     *
+     * 1byte = 8bit
+     * char = 2byte
+     * short = 2byte
+     * int = 4byte
+     * long = 8byte
+     *
+     */
+
+</code></pre>
+<pre><code>    public static void main(String[] args) {
+
+        /**
+         * byte 与 bit 结合位运算 获取 byte 中每一位bit 的表示情况
+         */
+        //1、接受字节流，获取每个字节中每一位的值（bit）: byte -&gt; bite
+        String str = &quot;1234A&quot;;
+//      49:  0011 0001
+//        50:     0011 0010
+//              0 0011 001      右移一位
+//             00 0011 00       右移两位
+//            000 0011 0        右移三位
+//           0000 0011          右移四位
+//          00000 001           右移五位
+        System.out.println(&quot;bit -&gt; byte = [&quot; + Integer.parseInt(&quot;00110010&quot;,2) + &quot;]&quot;);
+        for(byte b:str.getBytes()){
+            //取第一位的值
+            System.out.println(b+&quot; &amp; 1 = &quot; + (b &amp; 1));
+            //第二位
+            System.out.println(b+&quot;&gt;&gt;1 &amp; 1 = &quot; + (b&gt;&gt;1 &amp; 1) );
+            //第三位，以此类推
+            System.out.println(b+&quot;&gt;&gt;2 &amp; 1 = &quot; + (b&gt;&gt;2 &amp; 1) );
+            //第四位
+            System.out.println(b+&quot;&gt;&gt;3 &amp; 1 = &quot; + (b&gt;&gt;3 &amp; 1) );
+            //第五位
+            System.out.println(b+&quot;&gt;&gt;4 &amp; 1 = &quot; + (b&gt;&gt;4 &amp; 1));
+            //第六位
+            System.out.println(b+&quot;&gt;&gt;5 &amp; 1 = &quot; + (b&gt;&gt;5 &amp; 1));
+            //第七位
+            System.out.println(b+&quot;&gt;&gt;6 &amp; 1 = &quot; + (b&gt;&gt;6 &amp; 1));
+            //第八位
+            System.out.println(b+&quot;&gt;&gt;7 &amp; 1 = &quot; + (b&gt;&gt;7 &amp; 1));
+        }
+
+
+        //2、bite -&gt; byte,未考虑负数情况，主要以左起第一位区分：0正。负数时 结果=Integer.parseInt()-256
+
+        String[] bitArr = {&quot;00110001&quot;,&quot;00110010&quot;};
+        for(String bit : bitArr){
+            // bit -&gt; byte
+            System.out.println(bit+&quot; -&gt; byte = &quot; + (byte)Integer.parseInt(bit,2));//2：说明要转换的bit是二进制，默认是十进制
+            //byte -&gt; String
+            System.out.println((byte)Integer.parseInt(bit,2)+&quot;-&gt;String = &quot; + new String(new byte[]{(byte)Integer.parseInt(bit,2)}) );
+
+        }
+
+        /**
+         * 位 运算
+         * &amp; | ^ ～ &gt;&gt; &lt;&lt;
+         */
+
+        //1、异或：按位异或，不同得1，同得0
+
+        //两数交换:规则，两数异或后的结果再与其中一个数异或得到另一个数
+        int a=1,b=2;
+        a = a^b;
+        b = a^b;
+        a = a^b;
+        System.out.println(&quot;a=1,b=2 -&gt; a=&quot;+a+&quot;,b=&quot;+b);
+
+        //一个数与另一个数异或两次结果还是这个数
+        int a1=1,b1=2;
+        System.out.println(&quot;a1=1,b1=2;a1^b1^b1= -&gt; &quot;+(a1^b1^b1));
+
+        //2、&amp; ：全为1得1，否则得0
+
+
+        //3、| ：有1则得1
+
+        //4、a&gt;&gt;n 左补n个0,缩小原来的2^n ,a = a/2^n
+        int a4=16;//0001 0000
+        System.out.println(&quot;a4&gt;&gt;2(0000 0100) = &quot;+(a4&gt;&gt;2));
+
+        //5、a&lt;&lt;n 右补n个0，增大为原来的 2^n ,a = a*2^n
+        int a5=2;//0000 0010
+        System.out.println(&quot;a5&lt;&lt;2(0000 1000) = &quot;+(a5&lt;&lt;2));
+
+    }
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://huayuye.github.io/blog/2021/11/mybatis-where/" title="Mybatis Where的坑"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://huayuye.github.io/blog/2021/11/jdk-tool/"
+                    title="Jdk Tool"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
         </div>
-    </article>
+    </div>
+</nav>
+
+
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 <ul class="social-links">
     <li><a href="https://github.com/huayuye" target="_blank" title="github" data-toggle=tooltip data-placement=top >

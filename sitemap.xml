@@ -4,7 +4,105 @@
   
   <url>
     <loc>https://huayuye.github.io/blog/categories/</loc>
-    <lastmod>2021-11-25T09:46:00+08:00</lastmod>
+    <lastmod>2021-11-25T18:43:08+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/tags/java/</loc>
+    <lastmod>2021-11-25T18:43:08+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/categories/java/</loc>
+    <lastmod>2021-11-25T18:43:08+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/2021/11/java-meta-annotation/</loc>
+    <lastmod>2021-11-25T18:43:08+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/posts/</loc>
+    <lastmod>2021-11-25T18:43:08+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/tags/</loc>
+    <lastmod>2021-11-25T18:43:08+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/</loc>
+    <lastmod>2021-11-25T18:43:08+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/tags/jdk/</loc>
+    <lastmod>2021-11-25T18:37:20+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/2021/11/jdk-tool/</loc>
+    <lastmod>2021-11-25T18:37:20+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/2021/11/binary-convert/</loc>
+    <lastmod>2021-11-25T18:30:35+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/</loc>
+    <lastmod>2021-11-25T18:30:35+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/categories/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2021-11-25T18:30:35+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/tags/mybatis/</loc>
+    <lastmod>2021-11-25T18:20:06+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/2021/11/mybatis-where/</loc>
+    <lastmod>2021-11-25T18:20:06+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://huayuye.github.io/blog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2021-11-25T18:20:06+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -18,34 +116,6 @@
   
   <url>
     <loc>https://huayuye.github.io/blog/2021/11/gradle-vm/</loc>
-    <lastmod>2021-11-25T09:46:00+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://huayuye.github.io/blog/posts/</loc>
-    <lastmod>2021-11-25T09:46:00+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://huayuye.github.io/blog/tags/</loc>
-    <lastmod>2021-11-25T09:46:00+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://huayuye.github.io/blog/</loc>
-    <lastmod>2021-11-25T09:46:00+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://huayuye.github.io/blog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2021-11-25T09:46:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

@@ -6,10 +6,46 @@
     <description>Recent content in Posts on 冰灯</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Thu, 25 Nov 2021 09:46:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Nov 2021 18:43:08 +0800</lastBuildDate>
     
         <atom:link href="https://huayuye.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java Meta Annotation</title>
+      <link>https://huayuye.github.io/blog/2021/11/java-meta-annotation/</link>
+      <pubDate>Thu, 25 Nov 2021 18:43:08 +0800</pubDate>
+      
+      <guid>https://huayuye.github.io/blog/2021/11/java-meta-annotation/</guid>
+      <description>注解 JDK1.5版本才有的，理解为元数据，即描述数据的数据。 注解里面没有业务逻辑。 理解 注解是元数据，描述数据的数据 注解不涉及逻辑处理，用户可</description>
+    </item>
+    
+    <item>
+      <title>Jdk Tool</title>
+      <link>https://huayuye.github.io/blog/2021/11/jdk-tool/</link>
+      <pubDate>Thu, 25 Nov 2021 18:37:20 +0800</pubDate>
+      
+      <guid>https://huayuye.github.io/blog/2021/11/jdk-tool/</guid>
+      <description>1、 jps 列出已装载的JVM 请参考文档。 2、 jstack 打印线程堆栈信息 请参考文档。 3、jstat JVM监控统计信息，包括类的加载和卸载情况，新生代和老年</description>
+    </item>
+    
+    <item>
+      <title>Binary Convert(二进制之转换)</title>
+      <link>https://huayuye.github.io/blog/2021/11/binary-convert/</link>
+      <pubDate>Thu, 25 Nov 2021 18:30:35 +0800</pubDate>
+      
+      <guid>https://huayuye.github.io/blog/2021/11/binary-convert/</guid>
+      <description>关于本人之前遇到的一个位运算问题，简单的作了下分析，如有错误，望指正。 /** * 二进制 逢二进一 * 八进制 逢八进一 * 十进制 逢十进一 * 十六进制 逢十六进一</description>
+    </item>
+    
+    <item>
+      <title>Mybatis Where的坑</title>
+      <link>https://huayuye.github.io/blog/2021/11/mybatis-where/</link>
+      <pubDate>Thu, 25 Nov 2021 18:20:06 +0800</pubDate>
+      
+      <guid>https://huayuye.github.io/blog/2021/11/mybatis-where/</guid>
+      <description>mybatis where 标签的一个小坑，被我踩下去了. 为什么我会踩这个坑，只是因为我在模糊查询时，不想使用${},而使用另一个标签。 标签的作用就是将 传过来的参数</description>
+    </item>
     
     <item>
       <title>Gradle Vm</title>

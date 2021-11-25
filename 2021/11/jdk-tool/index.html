@@ -2,7 +2,8 @@
 <html lang="zh">
   <head>
     <title>
-        冰灯</title>
+        Jdk Tool - 冰灯
+      </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -19,25 +20,29 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    
+    <meta name="description" content="1、 jps 列出已装载的JVM 请参考文档。 2、 jstack 打印线程堆栈信息 请参考文档。 3、jstat JVM监控统计信息，包括类的加载和卸载情况，新生代和老年" />
     <meta name="generator" content="Hugo 0.89.4 with theme pure" />
-    <title>冰灯</title>
+    <title>Jdk Tool - 冰灯</title>
     
-    <link rel="alternate" type="application/rss+xml" href="https://huayuye.github.io/blog/posts/index.xml" title="冰灯" />
     
     <link rel="stylesheet" href="https://huayuye.github.io/blog/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://huayuye.github.io/blog/posts/" />
+    <meta property="og:title" content="Jdk Tool" />
+<meta property="og:description" content="1、 jps 列出已装载的JVM 请参考文档。 2、 jstack 打印线程堆栈信息 请参考文档。 3、jstat JVM监控统计信息，包括类的加载和卸载情况，新生代和老年" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huayuye.github.io/blog/2021/11/jdk-tool/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-25T18:37:20+08:00" />
+<meta property="article:modified_time" content="2021-11-25T18:37:20+08:00" />
 
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
+<meta itemprop="name" content="Jdk Tool">
+<meta itemprop="description" content="1、 jps 列出已装载的JVM 请参考文档。 2、 jstack 打印线程堆栈信息 请参考文档。 3、jstat JVM监控统计信息，包括类的加载和卸载情况，新生代和老年"><meta itemprop="datePublished" content="2021-11-25T18:37:20+08:00" />
+<meta itemprop="dateModified" content="2021-11-25T18:37:20+08:00" />
+<meta itemprop="wordCount" content="1228">
+<meta itemprop="keywords" content="jdk," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jdk Tool"/>
+<meta name="twitter:description" content="1、 jps 列出已装载的JVM 请参考文档。 2、 jstack 打印线程堆栈信息 请参考文档。 3、jstat JVM监控统计信息，包括类的加载和卸载情况，新生代和老年"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -250,48 +255,137 @@
 
     
     
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
 
-<main class="main" role="main">
-    <article class="content article article-archives article-type-list" itemscope="">
-        <header class="article-header">
-            <h1 itemprop="title">Posts</h1>
-            <p class="text-muted">共 6 篇文章</p>
-        </header>
-        <div class="article-body">
-                        <section class="panel panel-default b-no">
-                            <div class="panel-heading" role="tab">
-                                <h3 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse2021" aria-expanded="true">
-                                        <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-                                        &nbsp;2021
-                                    </a>
-                                </h3>
-                            </div>
-                            <div id="collapse2021" class="panel-collapse collapse in" role="tabpanel"
-                                aria-labelledby="heading2021">
-                                <div class="panel-body">
-                                    <div class="collection"><a href="https://huayuye.github.io/blog/2021/11/java-meta-annotation/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 18:43:08 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Java Meta Annotation
-</a><a href="https://huayuye.github.io/blog/2021/11/jdk-tool/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 18:37:20 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Jdk Tool
-</a><a href="https://huayuye.github.io/blog/2021/11/binary-convert/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 18:30:35 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Binary Convert(二进制之转换)
-</a><a href="https://huayuye.github.io/blog/2021/11/mybatis-where/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 18:20:06 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Mybatis Where的坑
-</a><a href="https://huayuye.github.io/blog/2021/11/gradle-vm/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-25 09:46:00 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-25
-    </time>Gradle Vm
-</a><a href="https://huayuye.github.io/blog/2021/11/hello/" class="collection-item" itemprop="url" target="_blank">
-    <time datetime="2021-11-19 17:16:59 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-19
-    </time>Hello
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/blog/2021/11/jdk-tool/"
+    >Jdk Tool</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://huayuye.github.io/blog/2021/11/jdk-tool/" class="article-date">
+  <time datetime="2021-11-25 18:37:20 &#43;0800 CST" itemprop="datePublished">2021-11-25</time>
 </a>
-        </div></div></div></section>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/blog/categories/java/"> java </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/blog/tags/jdk/"> jdk </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1228字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="1-jps">1、 jps</h1>
+<p>列出已装载的JVM
+请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jps.html">文档</a>。</p>
+<h1 id="2-jstack">2、 jstack</h1>
+<p>打印线程堆栈信息
+请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstack.html#BABGJDIF">文档</a>。</p>
+<h1 id="3jstat">3、jstat</h1>
+<p>JVM监控统计信息，包括类的加载和卸载情况，新生代和老年代的容量、使用情况等信息。
+-class
+-compiler
+-gc
+-gccapacity
+-gccause
+-gcnew
+-gcnewcapacity
+-gcold
+-gcoldcapacity
+-gcpermcapacity
+-gcutil
+-printcompilation
+请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html#BEHHGFAE">文档</a>。</p>
+<h1 id="4jmap">4、jmap</h1>
+<p>打印JVM堆内对象情况
+请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jmap.html#CEGCECJB">文档</a>）
+-dump:[live,]format=b,file=&lt; filename&gt;
+使用hprof二进制形式,输出jvm的heap内容到文件=. live子选项是可选的，假如指定live选项,那么只输出活的对象到文件。
+-finalizerinfo
+打印正等候回收的对象的信息。
+-heap
+打印heap的概要信息，GC使用的算法，heap的配置及wise heap的使用情况。
+-histo[:live]
+打印每个class的实例数目、内存占用、类全名信息。VM的内部类名字开头会加上前缀“<em>”。如果live子参数加上后,只统计活的对象数量。\n\n</em>   -clstats
+打印classload的信息。包含每个classloader的名字、活泼性、地址、父classloader和加载的class数量。
+-F
+在pid没有响应的时候强制使用-dump或者-histo参数。在这个模式下，live子参数无效。</p>
+<h1 id="5-jinfo">5、 jinfo</h1>
+<p>jinfo可以输出并修改运行时的java 进程的opts。用处比较简单，用于输出JAVA系统参数及命令行参数。请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jinfo.html#BCGEBFDD">文档</a>。</p>
+<h1 id="6jconsole">6、jconsole</h1>
+<p>一个java GUI监视工具，可以以图表化的形式显示各种数据。可通过远程连接监视远程的服务器VM。在cmd命令行里输入jconsole，选择进程就可以了。需要注意的就是在运行jconsole之前，必须要先设置环境变量DISPLAY，否则会报错误。
+请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jconsole.html#CACCABEH">文档</a>。</p>
+<h1 id="7-jvisualvm">7、 jvisualvm</h1>
+<p>jvisualvm同jconsole都是一个基于图形化界面的、可以查看本地及远程的JAVA GUI监控工具，Jvisualvm同jconsole的使用方式一样，直接在命令行打入Jvisualvm即可启动，不过Jvisualvm相比，界面更美观一些，数据更实时。请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jvisualvm.html#CBBEGDEJ">文档</a>。</p>
+<h1 id="8jhat">8、jhat</h1>
+<p>用于对JAVA heap进行离线分析的工具，可以对不同虚拟机中导出的heap信息文件进行分析。请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jhat.html#CIHHJAGE">文档</a>。</p>
+<h1 id="9jdb">9、jdb</h1>
+<p>用来对core文件和正在运行的Java进程进行实时地调试，里面包含了丰富的命令帮助您进行调试，它的功能和Sun studio里面所带的dbx非常相似，但jdb是专门用来针对Java应用程序的。现在应该说日常的开发中很少用到JDB了，因为现在的IDE已经帮我们封装好了，如使用ECLIPSE调用程序就是非常方便的，只要在非常特定的情况下可能会用到这个命令，如远程服务器的维护，没有IDE进行调试，那这个时候JDB应该可以帮上忙。请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdb.html#CHDGJCIE">文档</a>。</p>
+<h1 id="10jstatd">10、jstatd</h1>
+<p>jstatd是一个基于RMI（Remove Method Invocation）的服务程序，它用于监控基于HotSpot的JVM中资源的创建及销毁，并且提供了一个远程接口允许远程的监控工具连接到本地的JVM执行命令。
+请参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstatd.html#BABEHFHF">文档</a>。</p>
+<p>参考：http://blog.csdn.net/weitry/article/details/53284586</p>
+
+    </div>
+    <div class="article-footer">
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://huayuye.github.io/blog/2021/11/binary-convert/" title="Binary Convert(二进制之转换)"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://huayuye.github.io/blog/2021/11/java-meta-annotation/"
+                    title="Java Meta Annotation"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
         </div>
-    </article>
+    </div>
+</nav>
+
+
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 <ul class="social-links">
     <li><a href="https://github.com/huayuye" target="_blank" title="github" data-toggle=tooltip data-placement=top >
