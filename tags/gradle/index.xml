@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gradle on bd</title>
+    <title>gradle on 冰灯</title>
     <link>https://huayuye.github.io/blog/tags/gradle/</link>
-    <description>Recent content in gradle on bd</description>
+    <description>Recent content in gradle on 冰灯</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
     <lastBuildDate>Thu, 25 Nov 2021 09:46:00 +0800</lastBuildDate>
@@ -21,23 +21,21 @@
     </item>
     
     <item>
+      <title>关于</title>
+      <link>https://huayuye.github.io/blog/about/</link>
+      <pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huayuye.github.io/blog/about/</guid>
+      <description>Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
       <title>Hello</title>
       <link>https://huayuye.github.io/blog/2021/11/hello/</link>
       <pubDate>Fri, 19 Nov 2021 17:16:59 +0800</pubDate>
       
       <guid>https://huayuye.github.io/blog/2021/11/hello/</guid>
       <description>hello word !!! 编译 1、 2、</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://huayuye.github.io/blog/about/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://huayuye.github.io/blog/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
- https://github.</description>
     </item>
     
   </channel>

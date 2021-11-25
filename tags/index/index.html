@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
   <head>
     <title>
-        bd</title>
+        冰灯</title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -21,9 +21,9 @@
     
     
     <meta name="generator" content="Hugo 0.89.4 with theme pure" />
-    <title>bd</title>
+    <title>冰灯</title>
     
-    <link rel="alternate" type="application/rss+xml" href="https://huayuye.github.io/blog/tags/index/index.xml" title="bd" />
+    <link rel="alternate" type="application/rss+xml" href="https://huayuye.github.io/blog/tags/index/index.xml" title="冰灯" />
     
     <link rel="stylesheet" href="https://huayuye.github.io/blog/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
@@ -61,11 +61,11 @@
           </a>
           <h2 id="name" class="hidden-xs hidden-sm">冰灯</h2>
           <h3 id="title" class="hidden-xs hidden-sm hidden-md">云水禅心</h3>
-          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>China</small>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>wzqy China</small>
         </div><div class="search" id="search-form-wrap">
     <form class="search-form sidebar-form">
         <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
             <span class="input-group-btn">
                 <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
                         class="icon icon-search"></i></button>
@@ -75,7 +75,7 @@
             <div class="ins-search-mask"></div>
             <div class="ins-search-container">
                 <div class="ins-input-wrapper">
-                    <input type="text" class="ins-search-input" placeholder="Type something..."
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
                         x-webkit-speech />
                     <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
                         aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -99,31 +99,31 @@
             <li class="menu-item menu-item-home">
                 <a href="/blog/">
                     <i class="icon icon-home-fill"></i>
-                  <span class="menu-title">Home</span>
+                  <span class="menu-title">首页</span>
                 </a>
             </li>
             <li class="menu-item menu-item-archives">
                 <a href="/blog/posts/">
                     <i class="icon icon-archives-fill"></i>
-                  <span class="menu-title">Archives</span>
+                  <span class="menu-title">归档</span>
                 </a>
             </li>
             <li class="menu-item menu-item-categories">
                 <a href="/blog/categories/">
                     <i class="icon icon-folder"></i>
-                  <span class="menu-title">Categories</span>
+                  <span class="menu-title">分类</span>
                 </a>
             </li>
             <li class="menu-item menu-item-tags">
                 <a href="/blog/tags/">
                     <i class="icon icon-tags"></i>
-                  <span class="menu-title">Tags</span>
+                  <span class="menu-title">标签</span>
                 </a>
             </li>
             <li class="menu-item menu-item-about">
                 <a href="/blog/about/">
                     <i class="icon icon-cup-fill"></i>
-                  <span class="menu-title">About</span>
+                  <span class="menu-title">关于</span>
                 </a>
             </li>
         </ul>
@@ -135,7 +135,7 @@
   <div class="slimContent">
     
       <div class="widget">
-    <h3 class="widget-title">Board</h3>
+    <h3 class="widget-title">公告</h3>
     <div class="widget-body">
         <div id="board">
             <div class="content"><p>hello word~</p>
@@ -145,44 +145,7 @@
 </div>
 
       <div class="widget">
-    <h3 class="widget-title"> Tags</h3>
-    <div id="tag-cloud-list" class="widget-body">
-            
-            
-            <a href="https://huayuye.github.io/blog/tags/gradle/" class="tag-list-link" rel="1">gradle<span
-               class="tag-list-count">1</span></a>
-            
-            
-            <a href="https://huayuye.github.io/blog/tags/index/" class="tag-list-link" rel="1">index<span
-               class="tag-list-count">1</span></a>
-            
-    </div>
-<script>
-document.onreadystatechange = () => {
-  if (document.readyState === 'complete') {
-    tagCloud('#tag-cloud-list a',  8 ,  20 );
-  }
-};
-
-function tagCloud(where, min, max) {
-  let iMax = 0;
-  let iMin = 0;
-  $(where).each(function() {
-    let weight = Number($(this).attr("rel"));
-    if(iMax < weight) iMax = weight;
-    if(iMin > weight || iMin == 0) iMin = weight;
-  });
-  let step = (max - min)/(iMax - iMin);
-  $(where).each(function() {
-    let weight = $(this).attr("rel") - iMin;
-    $(this).css({"font-size": min + (weight * step) + 'px'});
-  });
-};
-</script>
-</div>
-
-      <div class="widget">
-    <h3 class="widget-title"> Categories</h3>
+    <h3 class="widget-title"> 分类</h3>
     <div class="widget-body">
         <ul class="category-list">
             <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="category-list-link">开发工具</a><span class="category-list-count">1</span></li>
@@ -190,7 +153,7 @@ function tagCloud(where, min, max) {
     </div>
 </div>
       <div class="widget">
-    <h3 class="widget-title"> Tags</h3>
+    <h3 class="widget-title"> 标签</h3>
     <div class="widget-body">
         <ul class="tag-list">
             
@@ -208,7 +171,7 @@ function tagCloud(where, min, max) {
 </div>
       
 <div class="widget">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget-body">
         <ul class="recent-post-list list-unstyled no-thumbnail">
             <li>
@@ -243,7 +206,7 @@ function tagCloud(where, min, max) {
     <article class="content article article-tags post-type-list" itemscope="">
         <header class="article-header">
             <h1 itemprop="name" class="hidden-xs">index</h1>
-            <p class="text-muted hidden-xs">Total 2 tags</p>
+            <p class="text-muted hidden-xs">共 2 个标签</p>
             <nav role="navigation" id="nav-main" class="okayNav">
                 <ul>
                     <li><a href="https://huayuye.github.io/blog/tags">All</a></li>
@@ -279,7 +242,7 @@ function tagCloud(where, min, max) {
             <i class="icon icon-rss"></i></a></li>
 </ul>
   <div class="copyright">
-    &copy;2017  -
+    &copy;2021  -
     2021
     <div class="publishby">
         Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
@@ -320,11 +283,11 @@ function tagCloud(where, min, max) {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
             },
             ROOT_URL: 'https:\/\/huayuye.github.io\/blog\/',
             CONTENT_URL: 'https:\/\/huayuye.github.io\/blog\/\/searchindex.json ',
