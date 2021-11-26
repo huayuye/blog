@@ -6,10 +6,28 @@
     <description>Recent content in Posts on 冰灯</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Thu, 25 Nov 2021 18:43:08 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Nov 2021 09:41:21 +0800</lastBuildDate>
     
         <atom:link href="https://huayuye.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Nginx上传文件500</title>
+      <link>https://huayuye.github.io/blog/2021/11/nginx-file-500/</link>
+      <pubDate>Fri, 26 Nov 2021 09:41:21 +0800</pubDate>
+      
+      <guid>https://huayuye.github.io/blog/2021/11/nginx-file-500/</guid>
+      <description>前言 今天使用nginx做负载，在上传图片时，一直报500错误（Internal Server Error 500）， 开始已为是程序问题，但是在本地上传是没有问题的。</description>
+    </item>
+    
+    <item>
+      <title>Mq Error, Recovery.Dets</title>
+      <link>https://huayuye.github.io/blog/2021/11/mq-recovery-dets/</link>
+      <pubDate>Fri, 26 Nov 2021 09:29:39 +0800</pubDate>
+      
+      <guid>https://huayuye.github.io/blog/2021/11/mq-recovery-dets/</guid>
+      <description>一、服务启动报错 ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured java.net.SocketException: socket closed 二、根据错误显示，大概是MQ的问题： 1、开始以为是 Virtual Hosts / 下的用户没远程登录权限 结果设置还是没用 2、后</description>
+    </item>
     
     <item>
       <title>Java Meta Annotation</title>
