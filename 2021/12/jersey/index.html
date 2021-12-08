@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Jersey - 冰灯
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="前言 jersey 框架：支持将文件上传到另一台的服务器上（tomcat为例）） 这里是直接使用tomcat搭建的一个文件服务器，搭建过程就不多蝉诉了 代码 package" />
+    <meta name="generator" content="Hugo 0.89.4 with theme pure" />
+    <title>Jersey - 冰灯</title>
+    
+    
+    <link rel="stylesheet" href="https://huayuye.github.io/blog/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Jersey" />
+<meta property="og:description" content="前言 jersey 框架：支持将文件上传到另一台的服务器上（tomcat为例）） 这里是直接使用tomcat搭建的一个文件服务器，搭建过程就不多蝉诉了 代码 package" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huayuye.github.io/blog/2021/12/jersey/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-08T10:01:55+08:00" />
+<meta property="article:modified_time" content="2021-12-08T10:01:55+08:00" />
+
+<meta itemprop="name" content="Jersey">
+<meta itemprop="description" content="前言 jersey 框架：支持将文件上传到另一台的服务器上（tomcat为例）） 这里是直接使用tomcat搭建的一个文件服务器，搭建过程就不多蝉诉了 代码 package"><meta itemprop="datePublished" content="2021-12-08T10:01:55+08:00" />
+<meta itemprop="dateModified" content="2021-12-08T10:01:55+08:00" />
+<meta itemprop="wordCount" content="1090">
+<meta itemprop="keywords" content="文件操作," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jersey"/>
+<meta name="twitter:description" content="前言 jersey 框架：支持将文件上传到另一台的服务器上（tomcat为例）） 这里是直接使用tomcat搭建的一个文件服务器，搭建过程就不多蝉诉了 代码 package"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="/blog" target="_blank">
+            <img class="img-circle img-rotate" src="https://huayuye.github.io/blog/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">冰灯</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">云水禅心</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>wzqy China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/blog/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">首页</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/blog/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">归档</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/blog/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">分类</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/blog/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">标签</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/blog/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">关于</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>hello word~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/java/" class="category-list-link">java</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/rpc/" class="category-list-link">rpc</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="category-list-link">中间件</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E5%B7%A5%E5%85%B7/" class="category-list-link">工具</a><span class="category-list-count">9</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E7%AE%97%E6%B3%95/" class="category-list-link">算法</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/dubbo/" class="tag-list-link">dubbo</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/elk/" class="tag-list-link">elk</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/git/" class="tag-list-link">git</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/gradle/" class="tag-list-link">gradle</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/index/" class="tag-list-link">index</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/java/" class="tag-list-link">java</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/jdk/" class="tag-list-link">jdk</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/mq/" class="tag-list-link">mq</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/mybatis/" class="tag-list-link">mybatis</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" class="tag-list-link">二进制</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="tag-list-link">文件操作</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/springboot-rabbitmq/" class="title">Springboot Rabbitmq</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:42:14 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/java-rabbitmq/" class="title">Java Rabbitmq</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:41:47 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/rabbitmq-work-model/" class="title">Rabbitmq Work Model</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:38:06 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/centos-nginx/" class="title">Centos安装Nginx</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:30:04 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/string-pool/" class="title">String Pool</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:26:38 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/blog/2021/12/jersey/"
+    >Jersey</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://huayuye.github.io/blog/2021/12/jersey/" class="article-date">
+  <time datetime="2021-12-08 10:01:55 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/blog/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/blog/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"> 文件操作 </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1090字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h4 id="前言">前言</h4>
+<p>jersey 框架：支持将文件上传到另一台的服务器上（tomcat为例））</p>
+<p>这里是直接使用tomcat搭建的一个文件服务器，搭建过程就不多蝉诉了</p>
+<h4 id="代码">代码</h4>
+<pre><code class="language-java">package com.bingdeng.demo.webapi.util;
+
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.http.HttpUtil;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
+import com.bingdeng.demo.webapi.handler.GlobalRunTimeException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.ConnectException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * 文件操作工具类
+ * Created by fh on 2018/1/11.
+ */
+public class FileUtil {
+    private static Logger log = LoggerFactory.getLogger(FileUtil.class);
+    //校验路径开头
+    private static final String PATTERN_REGEX = &quot;^(http|https)://.+&quot;;
+    //文件上传服务器
+    private static String fileHost;
+
+    public static void setFileHost(String fileHost) {
+        FileUtil.fileHost = fileHost;
+    }
+
+    /**
+     * 存储文件
+     *
+     * @param file 文件
+     * @param path 文件存储路径（文件夹）
+     * @return
+     */
+    public static String getUploadFileName(MultipartFile file, String path) {
+        if (path == null) {
+            log.error(&quot;保存文件路径为空&quot;);
+            return null;
+        }
+        String newFileUrl = null;
+        if (file != null) {
+            //获取内容类型
+            // String contentType = file.getContentType();
+            //获取文件名及类型
+            String fieldOriginalName = file.getOriginalFilename();
+            //获取文件后缀
+            String fieldType = fieldOriginalName.substring(fieldOriginalName.lastIndexOf(&quot;.&quot;) + 1);
+            //重新定义文件名
+            String tempNewName = getRandomFileName();
+            //保存图片服务器的请求路径
+            newFileUrl = path + tempNewName + &quot;.&quot; + fieldType;
+            // long size = file.getSize();
+            try {
+                //若是文件服务器，走这里
+                if (verifyUrlByRegEx(path)) {
+                    //实例化一个Jersey
+                    Client client = new Client();
+                    //设置请求路径
+                    WebResource resource = client.resource(newFileUrl);
+                    //发送post get put
+                    resource.put(String.class, file.getBytes());
+                } else {
+                    File dirPath = new File(path);
+                    if (!dirPath.exists()) {
+                        dirPath.mkdirs();
+                    }
+                    dirPath.setWritable(true, false);
+                    file.transferTo(new File(newFileUrl));
+                    File fieldIsExit = new File(newFileUrl);
+                    if (!fieldIsExit.exists()) {
+                        log.error(&quot;文件转存失败&quot;);
+                    } else {
+                        log.info(&quot;文件上传成功：url={}&quot;, newFileUrl);
+                    }
+                    newFileUrl = newFileUrl.replace(fileHost, &quot;&quot;);
+                }
+            } catch (IOException e) {
+                log.error(&quot;文件上传失败，msg:{}&quot;, e.getMessage());
+                throw new GlobalRunTimeException(BondStatusCodeEnum.CODE_70004.getCode(), &quot;文件上传失败&quot;, null);
+            }
+        }
+        return newFileUrl;
+    }
+
+    /**
+     * 存储文件
+     *
+     * @param fileBytes  文件
+     * @param nameSuffix 后缀名
+     * @param path       文件存储路径（文件夹）
+     * @return
+     */
+    public static String getUploadFileName(byte[] fileBytes, String path, String nameSuffix) {
+        if (StrUtil.isEmpty(path) || StrUtil.isEmpty(nameSuffix)) {
+            log.error(&quot;文件路径或文件后缀名为空&quot;);
+            return null;
+        }
+        String newFileUrl = null;
+        if (fileBytes != null &amp;&amp; fileBytes.length &gt; 0) {
+//重新定义文件名-当前时间:如2018-6-9-10-30-57-104000000.jpg
+            LocalDateTime today = LocalDateTime.now();
+            String tempNewName = getRandomFileName();
+//保存图片服务器的请求路径
+            newFileUrl = path + tempNewName + &quot;.&quot; + nameSuffix;
+            try {
+//若是文件服务器，走这里
+                if (verifyUrlByRegEx(path)) {
+//实例化一个Jersey
+                    Client client = new Client();
+//设置请求路径
+                    WebResource resource = client.resource(newFileUrl);
+//发送post get put
+                    resource.put(String.class, fileBytes);
+                } else {
+                    File dirPath = new File(path);
+                    if (!dirPath.exists()) {
+                        dirPath.mkdirs();
+                    }
+                    dirPath.setWritable(true, false);
+                    File fieldIsExit = cn.hutool.core.io.FileUtil.writeBytes(fileBytes, newFileUrl);
+                    if (!fieldIsExit.exists()) {
+                        log.error(&quot;文件转存失败&quot;);
+                    } else {
+                        log.info(&quot;文件上传成功：url={}&quot;, newFileUrl);
+                    }
+                    newFileUrl = newFileUrl.replace(fileHost, &quot;&quot;);
+                }
+            } catch (Exception e) {
+                log.error(&quot;文件上传失败，msg:{}&quot;, e.getMessage());
+                throw new GlobalRunTimeException(BondStatusCodeEnum.CODE_70004.getCode(), &quot;文件上传失败&quot;, null);
+            }
+        }
+        return newFileUrl;
+    }
+
+    /**
+     * URL以http或者https开头返回true,否则返回false
+     *
+     * @param path
+     * @return
+     */
+    public static boolean verifyUrlByRegEx(String path) {
+        Pattern pattern = Pattern.compile(PATTERN_REGEX);
+        Matcher matcher = pattern.matcher(path);
+        return matcher.matches();
+    }
+
+    /**
+     * 判断是否是支持的图片格式
+     *
+     * @param type
+     * @return
+     */
+    public static boolean judgeImageType(String type) {
+        for (String imageType : ConstantUtil.IMAGETYPE_CONSTANT) {
+            if (imageType.equals(type.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String getRandomFileName() {
+        return UUID.randomUUID().toString().replace(&quot;-&quot;,&quot;&quot;);
+    }
+
+}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://huayuye.github.io/blog/2021/12/let-encrypt/" title="Let Encrypt"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://huayuye.github.io/blog/2021/12/elk-install/"
+                    title="Elk Install"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/huayuye" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://huayuye.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2021  -
+    2021
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://huayuye.github.io/blog/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://huayuye.github.io/blog/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/huayuye.github.io\/blog\/',
+            CONTENT_URL: 'https:\/\/huayuye.github.io\/blog\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://huayuye.github.io/blog/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

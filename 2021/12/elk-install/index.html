@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Elk Install - 冰灯
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="准备 下载相应的安装包：https://www.elastic.co/downloads，我这里用的5.6.3版本的。 Logstash：日志收" />
+    <meta name="generator" content="Hugo 0.89.4 with theme pure" />
+    <title>Elk Install - 冰灯</title>
+    
+    
+    <link rel="stylesheet" href="https://huayuye.github.io/blog/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Elk Install" />
+<meta property="og:description" content="准备 下载相应的安装包：https://www.elastic.co/downloads，我这里用的5.6.3版本的。 Logstash：日志收" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huayuye.github.io/blog/2021/12/elk-install/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-08T10:05:08+08:00" />
+<meta property="article:modified_time" content="2021-12-08T10:05:08+08:00" />
+
+<meta itemprop="name" content="Elk Install">
+<meta itemprop="description" content="准备 下载相应的安装包：https://www.elastic.co/downloads，我这里用的5.6.3版本的。 Logstash：日志收"><meta itemprop="datePublished" content="2021-12-08T10:05:08+08:00" />
+<meta itemprop="dateModified" content="2021-12-08T10:05:08+08:00" />
+<meta itemprop="wordCount" content="2096">
+<meta itemprop="keywords" content="elk," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Elk Install"/>
+<meta name="twitter:description" content="准备 下载相应的安装包：https://www.elastic.co/downloads，我这里用的5.6.3版本的。 Logstash：日志收"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="/blog" target="_blank">
+            <img class="img-circle img-rotate" src="https://huayuye.github.io/blog/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">冰灯</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">云水禅心</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>wzqy China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/blog/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">首页</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/blog/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">归档</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/blog/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">分类</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/blog/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">标签</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/blog/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">关于</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>hello word~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/java/" class="category-list-link">java</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/rpc/" class="category-list-link">rpc</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="category-list-link">中间件</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E5%B7%A5%E5%85%B7/" class="category-list-link">工具</a><span class="category-list-count">9</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E7%AE%97%E6%B3%95/" class="category-list-link">算法</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/dubbo/" class="tag-list-link">dubbo</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/elk/" class="tag-list-link">elk</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/git/" class="tag-list-link">git</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/gradle/" class="tag-list-link">gradle</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/index/" class="tag-list-link">index</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/java/" class="tag-list-link">java</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/jdk/" class="tag-list-link">jdk</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/mq/" class="tag-list-link">mq</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/mybatis/" class="tag-list-link">mybatis</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" class="tag-list-link">二进制</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="tag-list-link">文件操作</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/springboot-rabbitmq/" class="title">Springboot Rabbitmq</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:42:14 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/java-rabbitmq/" class="title">Java Rabbitmq</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:41:47 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/rabbitmq-work-model/" class="title">Rabbitmq Work Model</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:38:06 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/centos-nginx/" class="title">Centos安装Nginx</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:30:04 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/string-pool/" class="title">String Pool</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:26:38 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/blog/2021/12/elk-install/"
+    >Elk Install</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://huayuye.github.io/blog/2021/12/elk-install/" class="article-date">
+  <time datetime="2021-12-08 10:05:08 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/blog/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/blog/tags/elk/"> elk </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2096字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h3 id="准备">准备</h3>
+<p>下载相应的安装包：<a href="https://www.elastic.co/downloads">https://www.elastic.co/downloads</a>，我这里用的5.6.3版本的。</p>
+<p>Logstash：日志收集</p>
+<p>ElasticSearch：日志存储与搜索</p>
+<p>Kibana：日志展示</p>
+<p>JDK8</p>
+<h3 id="安装-logstash">安装 logstash</h3>
+<p>(1)  wget <a href="https://www.elastic.co/downloads/logstash">https://www.elastic.co/downloads/logstash</a>/<a href="https://www.elastic.co/downloads/logstash">logstash</a>-5.6.3.tar.gz</p>
+<p>解压后是没有logstash的配置文件的，需要手动在解压包下（/home/bingdeng/javaDev/elk/logstash5.6.3）创建一个logstash.conf，为了测试，只是配置了简单的标准输入和标准输出及从文件读取日志，内容如下：</p>
+<pre><code>input{
+
+#标准输入读取
+
+        stdin{}
+
+ #从文件读取内容
+
+        file {
+
+               path =&gt; &quot;/home/bingdeng/elk/log/*.log&quot;
+
+                #从文件开始处读取
+
+               start_position =&gt; &quot;beginning&quot;
+
+        }
+
+}
+
+#过滤指定格式的日志
+
+filter {
+
+#测试日志格式实例 ： 55.3.244.1 GET /index.html 15824 0.043
+
+  #定义数据的格式,字段内容以空格区分：
+
+  grok {
+
+        match =&gt; {&quot;message&quot;=&gt;&quot;%{IP:client} %{WORD:method} %{URIPATHPARAM:request} %{NUMBER:bytes} %{NUMBER:duration}&quot;}
+
+  }
+
+ #（如IP 由grok_patterns提供(格式：%{IP:client} ) ，client 自己定义，表示解析后的字段名） [https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns](https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns)
+
+#输出结果
+
+#{
+
+#&quot;duration&quot; =&gt; &quot;0.043&quot;,
+
+ #      &quot;request&quot; =&gt; &quot;/index.html&quot;,
+
+ #   &quot;@timestamp&quot; =&gt; 2018-05-28T05:52:16.734Z,
+
+  #       &quot;method&quot; =&gt; &quot;GET&quot;,
+
+  #        &quot;bytes&quot; =&gt; &quot;15824&quot;,
+
+  #     &quot;@version&quot; =&gt; &quot;1&quot;,
+
+  #         &quot;host&quot; =&gt; &quot;bingdengfh&quot;,
+
+  #       &quot;client&quot; =&gt; &quot;55.3.244.1&quot;,
+
+  #      &quot;message&quot; =&gt; &quot;55.3.244.1 GET /index.html 15824 0.043&quot;
+
+#}
+
+  #定义客户端的IP是哪个字段（上面定义的数据格式）
+
+ # geoip {
+
+  #     source =&gt; &quot;client&quot;
+
+  #}
+}
+
+#输出
+
+output{
+
+          #配置elasticsearch的服务器路径及端口
+
+        elasticsearch{
+
+                hosts =&gt; &quot;192.168.43.100:9201&quot;
+
+               #索引：可动态设置  
+
+                index =&gt; &quot;logstash-test&quot;
+
+        }
+
+        stdout{
+
+                codec =&gt;rubydebug{}
+
+        }
+
+}
+</code></pre>
+<p>（2）、 在logstash的解压目录下执行命令：./bin/logstash -f logstash.conf，启动logstash</p>
+<p>成功：</p>
+<h3 id="安装elasticsearch">安装elasticsearch</h3>
+<p>(1)wget <a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a>/<a href="https://www.elastic.co/downloads/elasticsearch">elasticsearch</a>-5.6.3.tar.gz</p>
+<p>进入到elasticsearch的安装目录的config下，修改配置： vi elasticsearch.yml</p>
+<p>path.data修改为自己本机的data路径，自定义(这个路径如果不存在的话需要手动去创建)</p>
+<p>path,logs修改为自己本机的logs路径，也是自定义吧（这个路径如果不存在的话，启动elasticsearch会自动创建）</p>
+<p>network.host修改为安装服务器地址</p>
+<p>http.port为http访问端口，默认是9200，我这里给的9201</p>
+<p>内容如下：</p>
+<pre><code>#======================== Elasticsearch Configuration =========================
+
+#
+
+#NOTE: Elasticsearch comes with reasonable defaults for most settings.
+
+#       Before you set out to tweak and tune the configuration, make sure you
+
+#       understand what are you trying to accomplish and the consequences.
+
+#The primary way of configuring a node is via this file. This template lists
+
+#the most important settings you may want to configure for a production cluster.
+
+#Please consult the documentation for further information on configuration options:
+
+ https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+
+
+#---------------------------------- Cluster -----------------------------------
+
+#Use a descriptive name for your cluster:
+
+#集群名称
+
+cluster.name: es-test
+
+#
+
+#------------------------------------ Node ------------------------------------
+
+#Use a descriptive name for the node:
+
+#集群节点名称
+
+node.name: node-test-1
+
+#Add custom attributes to the node:
+
+#node.attr.rack: r1
+
+#----------------------------------- Paths ------------------------------------
+
+#Path to directory where to store the data (separate multiple locations by comma):
+
+#path.data: /path/to/data
+
+path.data: /home/bingdeng/javaDev/elk/es-path/datas/
+#Path to log files:
+#path.logs: /path/to/logs
+
+path.logs: /home/bingdeng/javaDev/elk/es-path/logs/
+
+#----------------------------------- Memory -----------------------------------
+
+#Lock the memory on startup:
+
+#bootstrap.memory_lock: true
+
+#Make sure that the heap size is set to about half the memory available
+
+#on the system and that the owner of the process is allowed to use this
+
+#limit.
+
+#Elasticsearch performs poorly when the system is swapping the memory.
+
+#---------------------------------- Network -----------------------------------
+
+#Set the bind address to a specific IP (IPv4 or IPv6):
+
+#network.host: 192.168.0.1
+
+network.host: 192.168.43.100
+
+#Set a custom port for HTTP:
+
+#http.port: 9200
+
+http.port: 9201
+
+#For more information, consult the network module documentation.
+
+#--------------------------------- Discovery ----------------------------------
+
+#Pass an initial list of hosts to perform discovery when new node is started:
+
+#The default list of hosts is [&quot;127.0.0.1&quot;, &quot;[::1]&quot;]
+
+#discovery.zen.ping.unicast.hosts: [&quot;host1&quot;, &quot;host2&quot;]
+
+#Prevent the &quot;split brain&quot; by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
+
+#discovery.zen.minimum_master_nodes: 3
+
+#For more information, consult the zen discovery module documentation.
+
+#---------------------------------- Gateway -----------------------------------
+
+#Block initial recovery after a full cluster restart until N nodes are started:
+
+#gateway.recover_after_nodes: 3
+
+#For more information, consult the gateway module documentation.
+
+#---------------------------------- Various -----------------------------------
+
+#Require explicit names when deleting indices:
+
+#action.destructive_requires_name: true  
+</code></pre>
+<p>(2)到elasticsearch目录下执行  ./bin/elasticsearch，启动elasticsearch</p>
+<p>访问  http://192.168.43.100:9201/</p>
+<p>页面出现：</p>
+<p>{<br>
+&ldquo;name&rdquo; : &ldquo;node-test-1&rdquo;,<br>
+&ldquo;cluster_name&rdquo; : &ldquo;es-test&rdquo;,<br>
+&ldquo;cluster_uuid&rdquo; : &ldquo;yuxNWTZcRpyNOnLvS2j0kQ&rdquo;,<br>
+&ldquo;version&rdquo; : {<br>
+&ldquo;number&rdquo; : &ldquo;5.6.3&rdquo;,<br>
+&ldquo;build_hash&rdquo; : &ldquo;1a2f265&rdquo;,<br>
+&ldquo;build_date&rdquo; : &ldquo;2017-10-06T20:33:39.012Z&rdquo;,<br>
+&ldquo;build_snapshot&rdquo; : false,<br>
+&ldquo;lucene_version&rdquo; : &ldquo;6.6.1&rdquo;<br>
+},<br>
+&ldquo;tagline&rdquo; : &ldquo;You Know, for Search&rdquo;</p>
+<p>}</p>
+<h3 id="安装kibana">安装kibana</h3>
+<p>(1)wget <a href="https://www.elastic.co/downloads/kibana">https://www.elastic.co/downloads/kibana</a>/kibana-5.6.3-linux-x86_64.tar.gz</p>
+<p>进入kibana的解压目录的config目录下，编辑kibana.yml，server.port：5601放开，server.host修改为kibana的安装服务器，配置elasticsearch的路径端口</p>
+<p>内容如下：</p>
+<pre><code>#Kibana is served by a back end server. This setting specifies the port to use.
+
+#server.port: 5601
+
+server.port: 5601
+
+#Specifies the address to which the Kibana server will bind. IP addresses and host names are both valid values.
+
+#The default is 'localhost', which usually means remote machines will not be able to connect.
+
+#To allow connections from remote users, set this parameter to a non-loopback address.
+
+#server.host: &quot;localhost&quot;
+
+#本kibana的服务器地址
+
+server.host: &quot;192.168.43.100&quot;
+
+#Enables you to specify a path to mount Kibana at if you are running behind a proxy. This only affects
+
+#the URLs generated by Kibana, your proxy is expected to remove the basePath value before forwarding requests
+
+#to Kibana. This setting cannot end in a slash.
+
+#server.basePath: &quot;&quot;
+
+#The maximum payload size in bytes for incoming server requests.
+
+#server.maxPayloadBytes: 1048576
+
+#The Kibana server's name.  This is used for display purposes.
+
+#server.name: &quot;your-hostname&quot;
+
+  
+
+#The URL of the Elasticsearch instance to use for all your queries.
+
+#elasticsearch.url: &quot;http://localhost:9200&quot;
+
+#elasticsearch的服务器地址及端口
+
+elasticsearch.url: &quot;http://192.168.43.100:9201&quot;
+
+#When this setting's value is true Kibana uses the hostname specified in the server.host
+
+#setting. When the value of this setting is false, Kibana uses the hostname of the host
+
+#that connects to this Kibana instance.
+
+#elasticsearch.preserveHost: true
+
+  
+
+#Kibana uses an index in Elasticsearch to store saved searches, visualizations and
+
+#dashboards. Kibana creates a new index if the index doesn't already exist.
+
+#kibana.index: &quot;.kibana&quot;
+
+  
+
+#The default application to load.
+
+#kibana.defaultAppId: &quot;discover&quot;
+
+  
+
+#If your Elasticsearch is protected with basic authentication, these settings provide
+
+#the username and password that the Kibana server uses to perform maintenance on the Kibana
+
+#index at startup. Your Kibana users still need to authenticate with Elasticsearch, which
+
+#is proxied through the Kibana server.
+
+#elasticsearch.username: &quot;user&quot;
+
+#elasticsearch.password: &quot;pass&quot;
+
+  
+
+#Enables SSL and paths to the PEM-format SSL certificate and SSL key files, respectively.
+
+#These settings enable SSL for outgoing requests from the Kibana server to the browser.
+
+#server.ssl.enabled: false
+
+#server.ssl.certificate: /path/to/your/server.crt
+
+#server.ssl.key: /path/to/your/server.key
+
+  
+
+#Optional settings that provide the paths to the PEM-format SSL certificate and key files.
+
+#These files validate that your Elasticsearch backend uses the same key files.
+
+#elasticsearch.ssl.certificate: /path/to/your/client.crt
+
+#elasticsearch.ssl.key: /path/to/your/client.key
+
+  
+
+#Optional setting that enables you to specify a path to the PEM file for the certificate
+
+#authority for your Elasticsearch instance.
+
+#elasticsearch.ssl.certificateAuthorities: [ &quot;/path/to/your/CA.pem&quot; ]
+
+  
+
+#To disregard the validity of SSL certificates, change this setting's value to 'none'.
+
+#elasticsearch.ssl.verificationMode: full
+
+  
+
+#Time in milliseconds to wait for Elasticsearch to respond to pings. Defaults to the value of
+
+#the elasticsearch.requestTimeout setting.
+
+#elasticsearch.pingTimeout: 1500
+
+  
+
+#Time in milliseconds to wait for responses from the back end or Elasticsearch. This value
+
+#must be a positive integer.
+
+#elasticsearch.requestTimeout: 30000
+
+  
+
+#List of Kibana client-side headers to send to Elasticsearch. To send *no* client-side
+
+#headers, set this value to [] (an empty list).
+
+#elasticsearch.requestHeadersWhitelist: [ authorization ]
+
+  
+
+#Header names and values that are sent to Elasticsearch. Any custom headers cannot be overwritten
+
+#by client-side headers, regardless of the elasticsearch.requestHeadersWhitelist configuration.
+
+#elasticsearch.customHeaders: {}
+
+
+#Time in milliseconds for Elasticsearch to wait for responses from shards. Set to 0 to disable.
+
+#elasticsearch.shardTimeout: 0
+
+  
+
+#Time in milliseconds to wait for Elasticsearch at Kibana startup before retrying.
+
+#elasticsearch.startupTimeout: 5000
+
+  
+
+#Specifies the path where Kibana creates the process ID file.
+
+#pid.file: /var/run/kibana.pid
+
+  
+
+#Enables you specify a file where Kibana stores log output.
+
+#logging.dest: stdout
+
+  
+
+#Set the value of this setting to true to suppress all logging output.
+
+#logging.silent: false
+
+  
+
+#Set the value of this setting to true to suppress all logging output other than error messages.
+
+#logging.quiet: false
+
+  
+
+#Set the value of this setting to true to log all events, including system usage information
+
+#and all requests.
+
+#logging.verbose: false
+
+  
+
+#Set the interval in milliseconds to sample system and process performance
+
+#metrics. Minimum is 100ms. Defaults to 5000.
+
+#ops.interval: 5000
+
+  
+
+#The default locale. This locale can be used in certain circumstances to substitute any missing
+
+#translations.
+
+#i18n.defaultLocale: &quot;en&quot;
+</code></pre>
+<p>（2） 启动kibana，进入安装目录下： 执行 ./bin/kibana</p>
+<p>（3）访问 http://192.168.43.100:5601</p>
+<p>到此，elk安装及简单应用就完成了</p>
+<p>后期，会结合redis，或者使用filebeat</p>
+
+    </div>
+    <div class="article-footer">
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://huayuye.github.io/blog/2021/12/jersey/" title="Jersey"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://huayuye.github.io/blog/2021/12/logstash-grok/"
+                    title="Logstash Grok"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/huayuye" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://huayuye.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2021  -
+    2021
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://huayuye.github.io/blog/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://huayuye.github.io/blog/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/huayuye.github.io\/blog\/',
+            CONTENT_URL: 'https:\/\/huayuye.github.io\/blog\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://huayuye.github.io/blog/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

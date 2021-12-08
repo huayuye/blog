@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Java Rabbitmq - 冰灯
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="之前项目中只是单纯的使用其中的一种方式，这里介绍下其他的方式 一、生产者 1、创建服务连接 private static ConnectionFactory connectionFactory = null; static { connectionFactory = new ConnectionFactory(); connectionFactory.setHost(&amp;quot;192.168.43.120&amp;quot;); connectionFactory.setPort(5672); connectionFactory.setUsername(&amp;quot;root&amp;quot;); connectionFactory.setPassword(&amp;quot;root&amp;quot;); // connectionFactory.setVirtualHost(&amp;quot;/&amp;quot;); } 2、定义队列 public static" />
+    <meta name="generator" content="Hugo 0.89.4 with theme pure" />
+    <title>Java Rabbitmq - 冰灯</title>
+    
+    
+    <link rel="stylesheet" href="https://huayuye.github.io/blog/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Java Rabbitmq" />
+<meta property="og:description" content="之前项目中只是单纯的使用其中的一种方式，这里介绍下其他的方式 一、生产者 1、创建服务连接 private static ConnectionFactory connectionFactory = null; static { connectionFactory = new ConnectionFactory(); connectionFactory.setHost(&quot;192.168.43.120&quot;); connectionFactory.setPort(5672); connectionFactory.setUsername(&quot;root&quot;); connectionFactory.setPassword(&quot;root&quot;); // connectionFactory.setVirtualHost(&quot;/&quot;); } 2、定义队列 public static" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huayuye.github.io/blog/2021/12/java-rabbitmq/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-08T10:41:47+08:00" />
+<meta property="article:modified_time" content="2021-12-08T10:41:47+08:00" />
+
+<meta itemprop="name" content="Java Rabbitmq">
+<meta itemprop="description" content="之前项目中只是单纯的使用其中的一种方式，这里介绍下其他的方式 一、生产者 1、创建服务连接 private static ConnectionFactory connectionFactory = null; static { connectionFactory = new ConnectionFactory(); connectionFactory.setHost(&quot;192.168.43.120&quot;); connectionFactory.setPort(5672); connectionFactory.setUsername(&quot;root&quot;); connectionFactory.setPassword(&quot;root&quot;); // connectionFactory.setVirtualHost(&quot;/&quot;); } 2、定义队列 public static"><meta itemprop="datePublished" content="2021-12-08T10:41:47+08:00" />
+<meta itemprop="dateModified" content="2021-12-08T10:41:47+08:00" />
+<meta itemprop="wordCount" content="977">
+<meta itemprop="keywords" content="mq," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java Rabbitmq"/>
+<meta name="twitter:description" content="之前项目中只是单纯的使用其中的一种方式，这里介绍下其他的方式 一、生产者 1、创建服务连接 private static ConnectionFactory connectionFactory = null; static { connectionFactory = new ConnectionFactory(); connectionFactory.setHost(&quot;192.168.43.120&quot;); connectionFactory.setPort(5672); connectionFactory.setUsername(&quot;root&quot;); connectionFactory.setPassword(&quot;root&quot;); // connectionFactory.setVirtualHost(&quot;/&quot;); } 2、定义队列 public static"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="/blog" target="_blank">
+            <img class="img-circle img-rotate" src="https://huayuye.github.io/blog/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">冰灯</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">云水禅心</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>wzqy China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/blog/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">首页</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/blog/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">归档</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/blog/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">分类</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/blog/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">标签</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/blog/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">关于</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>hello word~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/java/" class="category-list-link">java</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/rpc/" class="category-list-link">rpc</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="category-list-link">中间件</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E5%B7%A5%E5%85%B7/" class="category-list-link">工具</a><span class="category-list-count">9</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E7%AE%97%E6%B3%95/" class="category-list-link">算法</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/dubbo/" class="tag-list-link">dubbo</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/elk/" class="tag-list-link">elk</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/git/" class="tag-list-link">git</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/gradle/" class="tag-list-link">gradle</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/index/" class="tag-list-link">index</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/java/" class="tag-list-link">java</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/jdk/" class="tag-list-link">jdk</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/mq/" class="tag-list-link">mq</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/mybatis/" class="tag-list-link">mybatis</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" class="tag-list-link">二进制</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="tag-list-link">文件操作</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/springboot-rabbitmq/" class="title">Springboot Rabbitmq</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:42:14 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/java-rabbitmq/" class="title">Java Rabbitmq</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:41:47 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/rabbitmq-work-model/" class="title">Rabbitmq Work Model</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:38:06 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/centos-nginx/" class="title">Centos安装Nginx</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:30:04 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/string-pool/" class="title">String Pool</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:26:38 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/blog/2021/12/java-rabbitmq/"
+    >Java Rabbitmq</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://huayuye.github.io/blog/2021/12/java-rabbitmq/" class="article-date">
+  <time datetime="2021-12-08 10:41:47 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/blog/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"> 中间件 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/blog/tags/mq/"> mq </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 977字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>之前项目中只是单纯的使用其中的一种方式，这里介绍下其他的方式</p>
+<h4 id="一生产者">一、生产者</h4>
+<p>1、创建服务连接</p>
+<pre><code class="language-java">    private static ConnectionFactory connectionFactory = null;
+
+    static {
+        connectionFactory = new ConnectionFactory();
+        connectionFactory.setHost(&quot;192.168.43.120&quot;);
+        connectionFactory.setPort(5672);
+        connectionFactory.setUsername(&quot;root&quot;);
+        connectionFactory.setPassword(&quot;root&quot;);
+//        connectionFactory.setVirtualHost(&quot;/&quot;);
+    }
+
+</code></pre>
+<p>2、定义队列</p>
+<pre><code class="language-java">
+    public static void declareExchange(String exchangeType,String testQueue, String testExchange, String testRoutingkey) {
+        try {
+            Connection connection = connectionFactory.newConnection();
+            Channel channel = connection.createChannel();
+            channel.exchangeDeclare(testExchange,exchangeType,true);
+            channel.queueDeclare(testQueue,false,false,false,null);
+            channel.queueBind(testQueue, testExchange, testRoutingkey);
+            System.out.println(&quot;declareExchange,exchangeType = [&quot; + exchangeType + &quot;], testQueue = [&quot; + testQueue + &quot;], testExchange = [&quot; + testExchange + &quot;], testRoutingkey = [&quot; + testRoutingkey + &quot;]&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void declareQueue(String testQueue) {
+        try {
+            Connection connection = connectionFactory.newConnection();
+            Channel channel = connection.createChannel();
+            channel.queueDeclare(testQueue,false,false,false,null);
+            System.out.println(&quot;declareQueue,testQueue = [&quot; + testQueue + &quot;]&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
+
+</code></pre>
+<p>3、发布消息</p>
+<pre><code class="language-java">public static void publishExchange(String msg, String testExchange, String testRoutingkey) {
+    try {
+        Connection connection = connectionFactory.newConnection();
+        Channel channel = connection.createChannel();
+        channel.basicPublish(
+                testExchange,
+                testRoutingkey,
+                null,
+                msg.getBytes()
+        );
+        System.out.println(&quot;publishExchange,msg = [&quot; + msg + &quot;], testQueue = [&quot; + MQConfig.queue_test + &quot;], testExchange = [&quot; + testExchange + &quot;], testRoutingkey = [&quot; + testRoutingkey + &quot;]&quot;);
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (TimeoutException e) {
+        e.printStackTrace();
+    }
+
+}
+
+public static void publishToQueue(String msg, String testQueue) {
+    try {
+        Connection connection = connectionFactory.newConnection();
+        Channel channel = connection.createChannel();
+        channel.basicPublish(
+                &quot;&quot;,
+                testQueue,
+                null,
+                msg.getBytes()
+        );
+        System.out.println(&quot;publishToQueuen,msg = [&quot; + msg + &quot;], testQueue = [&quot; + testQueue + &quot;]&quot;);
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (TimeoutException e) {
+        e.printStackTrace();
+    }
+
+}
+</code></pre>
+<h4 id="二消费者">二、消费者</h4>
+<pre><code class="language-java"> public static void comsumer(String name,String testQueue) {
+        try {
+            Connection connection = connectionFactory.newConnection();
+            Channel channel = connection.createChannel();
+            while (true){
+		//自动确认回复
+                channel.basicConsume(testQueue,true,new DefaultConsumer(channel){
+                    @Override
+                    public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                        dowork(name+&quot;-&quot;+consumerTag+&quot;-comsumer: &quot;+new String(body));
+                    }
+                });
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+
+    }
+//具体的业务实现
+    public static void dowork(String msg){
+        System.out.println(&quot;msg = [&quot; + msg + &quot;]&quot;);
+    }
+</code></pre>
+<h4 id="三广播主题路由的体验">三、广播，主题，路由的体验</h4>
+<p>1、广播</p>
+<pre><code class="language-java">/**
+     * 广播
+     * 不会校验RoutingKey
+     * 直接将消息发送到指定交换机的所有queue中
+     */
+    private static void testFaoutExchange() {
+        MQProductor.declareExchange(MQConfig.type_exchange_faout,MQConfig.fanout_exchange_queue1_test,MQConfig.fanout_exchange_test,MQConfig.fanout_routingkey1_test);
+        MQProductor.declareExchange(MQConfig.type_exchange_faout,MQConfig.fanout_exchange_queue2_test,MQConfig.fanout_exchange_test,MQConfig.fanout_routingkey2_test);
+        for(int i=0;i&lt;=100000;i++){
+            if(i%2==0){
+                MQProductor.publishExchange(&quot;faout-TestProductor[1]-&quot;+i,MQConfig.fanout_exchange_test,MQConfig.fanout_routingkey1_test);
+            }else {
+                MQProductor.publishExchange(&quot;faout-TestProductor[2]-&quot;+i,MQConfig.fanout_exchange_test,MQConfig.fanout_routingkey2_test);
+            }
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+</code></pre>
+<p>2、路由 精准匹配</p>
+<pre><code class="language-java"> /**
+     * routingkey路由 精准匹配
+     */
+    private static void testDirectExchange() {
+        MQProductor.declareExchange(MQConfig.type_exchange_direct,MQConfig.direct_queue_test,MQConfig.direct_exchange_test,MQConfig.direct_routingkey_test);
+        MQProductor.declareExchange(MQConfig.type_exchange_direct,MQConfig.direct_queue2_test,MQConfig.direct_exchange_test,MQConfig.direct_routingkey2_test);
+        for(int i=0;i&lt;=100000;i++){
+            if(i%2==0){
+                MQProductor.publishExchange(&quot;Direct-TestProductor[1]-&quot;+i,MQConfig.direct_exchange_test,MQConfig.direct_routingkey_test);
+            }else {
+                MQProductor.publishExchange(&quot;Direct-TestProductor[2]-&quot;+i,MQConfig.direct_exchange_test,MQConfig.direct_routingkey2_test);
+            }
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+</code></pre>
+<p>3、主题模式</p>
+<pre><code class="language-java">/**
+     * 主题模式
+     * 主要是模糊匹配
+     * 当生产者推送消息时，会在指定的交换机中通过Publish时指定的RoutingKey与已经绑定好queue的BindingKey进行模糊匹配，
+     * 当匹配到所有符合BindingKey，就会将此消息推送到相应BindingKey绑定的queue中
+     * BindingKey规则：
+     * .# 表示匹配0个或多个. (如 #.topic 能匹配的routingKey(topci, xx.topic,xx.xx.topic等；topic.# 也类似)）
+     * .* 表示.个数要严格匹配（如*.topic 能匹配的routingKey(只能匹配 xx.topic，匹配不到 xx.xx.topic；topic.* 也类似)）
+     */
+    private static void testTopic() {
+        MQProductor.declareExchange(MQConfig.type_exchange_topic,MQConfig.topic_queue1_test,MQConfig.topic_exchange_test,MQConfig.topic_routingkey1_test);
+        MQProductor.declareExchange(MQConfig.type_exchange_topic,MQConfig.topic_queue2_test,MQConfig.topic_exchange_test,MQConfig.topic_routingkey2_test);
+        MQProductor.declareExchange(MQConfig.type_exchange_topic,MQConfig.topic_queue3_test,MQConfig.topic_exchange_test,MQConfig.topic_routingkey3_test);
+        MQProductor.declareExchange(MQConfig.type_exchange_topic,MQConfig.topic_queue4_test,MQConfig.topic_exchange_test,MQConfig.topic_routingkey4_test);
+        MQProductor.declareExchange(MQConfig.type_exchange_topic,MQConfig.topic_queue5_test,MQConfig.topic_exchange_test,MQConfig.topic_routingkey5_test);
+        MQProductor.declareExchange(MQConfig.type_exchange_topic,MQConfig.topic_queue6_test,MQConfig.topic_exchange_test,MQConfig.topic_routingkey6_test);
+
+        for(int j=0;j&lt;=100000;j++){
+            if(j%3==0){
+                MQProductor.publishExchange(&quot;Topic-TestProductor[r1/r2]-&quot;+j,MQConfig.topic_exchange_test,MQConfig.topic_routingkey_test+&quot;.2&quot;);
+            }else if(j%3==1){
+                MQProductor.publishExchange(&quot;Topic-Test r3/r4-TestProductor[r4]-&quot;+j,MQConfig.topic_exchange_test,MQConfig.topic_routingkey_test);
+            }else if(j%3==2){
+                MQProductor.publishExchange(&quot;Topic-Test r3/r4-TestProductor[r5]-&quot;+j,MQConfig.topic_exchange_test,&quot;5.&quot;+MQConfig.topic_routingkey_test+&quot;.5&quot;+&quot;.5&quot;);
+            }
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+</code></pre>
+<p>4、多消费者监听同一队列（若是要求每个消息只允许被消费一次话，必须自己实现一个类似锁机制的功能来控制，如果这个消息被消费过，下一个消费者就不能再消费了）</p>
+<pre><code class="language-java">/**
+     * 多个消费者消费一个queue
+     */
+    public static void multiComsumerToqueue(){
+        new Thread(()-&gt;{
+            MQComsumer.comsumer(&quot;multi-Comsumer1&quot;,MQConfig.queue_test);
+
+        }).start();
+        new Thread(()-&gt;{
+            MQComsumer.comsumer(&quot;multi-Comsumer2&quot;,MQConfig.queue_test);
+
+        }).start();
+    }
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://huayuye.github.io/blog/2021/12/rabbitmq-work-model/" title="Rabbitmq Work Model"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://huayuye.github.io/blog/2021/12/springboot-rabbitmq/"
+                    title="Springboot Rabbitmq"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/huayuye" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://huayuye.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2021  -
+    2021
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://huayuye.github.io/blog/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://huayuye.github.io/blog/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/huayuye.github.io\/blog\/',
+            CONTENT_URL: 'https:\/\/huayuye.github.io\/blog\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://huayuye.github.io/blog/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

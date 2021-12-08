@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Springboot Dubbo - 冰灯
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="一、下载并安装zookeeper dubbo的注册中可以选redis，zookeeper等，这里使用zookeeper作为dubbo的注册中心" />
+    <meta name="generator" content="Hugo 0.89.4 with theme pure" />
+    <title>Springboot Dubbo - 冰灯</title>
+    
+    
+    <link rel="stylesheet" href="https://huayuye.github.io/blog/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Springboot Dubbo" />
+<meta property="og:description" content="一、下载并安装zookeeper dubbo的注册中可以选redis，zookeeper等，这里使用zookeeper作为dubbo的注册中心" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huayuye.github.io/blog/2021/12/springboot-dubbo/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-08T10:18:06+08:00" />
+<meta property="article:modified_time" content="2021-12-08T10:18:06+08:00" />
+
+<meta itemprop="name" content="Springboot Dubbo">
+<meta itemprop="description" content="一、下载并安装zookeeper dubbo的注册中可以选redis，zookeeper等，这里使用zookeeper作为dubbo的注册中心"><meta itemprop="datePublished" content="2021-12-08T10:18:06+08:00" />
+<meta itemprop="dateModified" content="2021-12-08T10:18:06+08:00" />
+<meta itemprop="wordCount" content="704">
+<meta itemprop="keywords" content="dubbo," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Springboot Dubbo"/>
+<meta name="twitter:description" content="一、下载并安装zookeeper dubbo的注册中可以选redis，zookeeper等，这里使用zookeeper作为dubbo的注册中心"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="/blog" target="_blank">
+            <img class="img-circle img-rotate" src="https://huayuye.github.io/blog/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">冰灯</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">云水禅心</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>wzqy China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/blog/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">首页</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/blog/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">归档</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/blog/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">分类</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/blog/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">标签</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/blog/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">关于</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>hello word~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/java/" class="category-list-link">java</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/rpc/" class="category-list-link">rpc</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="category-list-link">中间件</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E5%B7%A5%E5%85%B7/" class="category-list-link">工具</a><span class="category-list-count">9</span></li>
+            <li class="category-list-item"><a href="https://huayuye.github.io/blog/categories/%E7%AE%97%E6%B3%95/" class="category-list-link">算法</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/dubbo/" class="tag-list-link">dubbo</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/elk/" class="tag-list-link">elk</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/git/" class="tag-list-link">git</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/gradle/" class="tag-list-link">gradle</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/index/" class="tag-list-link">index</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/java/" class="tag-list-link">java</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/jdk/" class="tag-list-link">jdk</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/mq/" class="tag-list-link">mq</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/mybatis/" class="tag-list-link">mybatis</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" class="tag-list-link">二进制</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://huayuye.github.io/blog/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="tag-list-link">文件操作</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/springboot-rabbitmq/" class="title">Springboot Rabbitmq</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:42:14 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/java-rabbitmq/" class="title">Java Rabbitmq</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:41:47 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/rabbitmq-work-model/" class="title">Rabbitmq Work Model</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:38:06 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/centos-nginx/" class="title">Centos安装Nginx</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:30:04 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://huayuye.github.io/blog/2021/12/string-pool/" class="title">String Pool</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-12-08 10:26:38 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/blog/2021/12/springboot-dubbo/"
+    >Springboot Dubbo</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://huayuye.github.io/blog/2021/12/springboot-dubbo/" class="article-date">
+  <time datetime="2021-12-08 10:18:06 &#43;0800 CST" itemprop="datePublished">2021-12-08</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/blog/categories/rpc/"> rpc </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/blog/tags/dubbo/"> dubbo </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 704字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h4 id="一下载并安装zookeeper">一、下载并安装zookeeper</h4>
+<p>dubbo的注册中可以选redis，zookeeper等，这里使用zookeeper作为dubbo的注册中心</p>
+<p><strong>1、下载</strong>
+<a href="https://mirrors.cnnic.cn/apache/zookeeper/">https://mirrors.cnnic.cn/apache/zookeeper/</a></p>
+<p><strong>2、安装</strong>
+（1）将下载的压缩包根据自己的喜好解压到指定目录（/home/bdmac/software/zk）</p>
+<p>（2）进入解压目录，在conf下将zoo_sample.cfg复制一份更名为zoo.cfg,修改里面配置，我的配置如下</p>
+<pre><code>  tickTime=2000
+  # The number of ticks that the initial 
+  # synchronization phase can take
+  initLimit=10
+  # The number of ticks that can pass between 
+  # sending a request and getting an acknowledgement
+  syncLimit=5
+  # the directory where the snapshot is stored.
+  # do not use /tmp for storage, /tmp here is just 
+  # example sakes.
+  #数据存储处
+  dataDir=/home/bdmac/software/zk/data
+  #日志存储
+  dataLogDir=/home/bdmac/software/zk/logs
+  #the port at which the clients will connect
+  #端口
+  clientPort=2181
+</code></pre>
+<p><strong>3、启动zk</strong>
+(1)进入bin目录，执行zkServer.sh命令,默认会使用刚配置的zoo.cfg</p>
+<pre><code>./zkServer.sh start
+</code></pre>
+<p>(2)zk的启动相关命令</p>
+<pre><code>./zkServer.sh start
+./zkServer.sh stop
+./zkServer.sh restart
+./zkServer.sh status
+</code></pre>
+<h4 id="二安装-dubbo-admin">二、安装 dubbo-admin</h4>
+<p>用于查看服务注册、订阅、调用等情况
+1、gitgub上下载，2.6版本之后，dubbo-admin就没有了。而是放在了这里面 <a href="https://github.com/apache/incubator-dubbo-ops/tree/master">https://github.com/apache/incubator-dubbo-ops/tree/master</a></p>
+<p>2、整个项目下载下来后，进入到dubbo-admin目录下,执行以下命令，打包
+mvn package -Dmaven.skip.test=true
+接下来进入到target下找到相应的war，直接丢进去tomcat，启动tomcat即可</p>
+<h4 id="三项目中pom及yml的配置">三、项目中pom及yml的配置</h4>
+<p>项目结构
+dubbo-api
+dubbo-provider
+dubbo-ccomsumers三个模块，
+api分别给provider和comsumer引用</p>
+<p>1、引入的pom</p>
+<pre><code>	&lt;dependency&gt;
+	  &lt;groupId&gt;com.alibaba.spring.boot&lt;/groupId&gt;
+	  &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;
+	  &lt;version&gt;2.0.0&lt;/version&gt;
+	&lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;com.101tec&lt;/groupId&gt;
+		&lt;artifactId&gt;zkclient&lt;/artifactId&gt;
+	   &lt;version&gt;0.9&lt;/version&gt;
+	&lt;/dependency&gt;
+</code></pre>
+<p>2、项目示例请前往：
+[https://github.com/huayuye/springboot-dubbo-test] (<a href="https://github.com/huayuye/springboot-dubbo-test">https://github.com/huayuye/springboot-dubbo-test</a>)</p>
+<h4 id="四碰到的问题">四、碰到的问题</h4>
+<p>1、项目中接口调用也直接报空指针异常:
+原因：是@Refrence 的IService 为null，而为null的原因，是因为注册中心没有找到相应服务</p>
+<p>2、针对我的解决：
+在提供者和消费者启动类上加上这个注解扫描基础包：
+@EnableDubbo(scanBasePackages = {&quot;com.bingdeng.dubbo.provider&quot;})
+@EnableDubbo(scanBasePackages={&quot;com.bingdeng.dubbo.comsumer&quot;})</p>
+
+    </div>
+    <div class="article-footer">
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://huayuye.github.io/blog/2021/12/elasticsearch-java-api/" title="Elasticsearch Java Api"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://huayuye.github.io/blog/2021/12/springboot-dubbo-cluster/"
+                    title="Springboot Dubbo Cluster"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/huayuye" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://huayuye.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2021  -
+    2021
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://huayuye.github.io/blog/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://huayuye.github.io/blog/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/huayuye.github.io\/blog\/',
+            CONTENT_URL: 'https:\/\/huayuye.github.io\/blog\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://huayuye.github.io/blog/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>
