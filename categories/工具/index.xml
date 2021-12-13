@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>spingboot jar配置成linux的服务</title>
+      <link>https://huayuye.github.io/blog/2021/12/jar-linux-service/</link>
+      <pubDate>Mon, 13 Dec 2021 18:07:32 +0800</pubDate>
+      
+      <guid>https://huayuye.github.io/blog/2021/12/jar-linux-service/</guid>
+      <description>前言 将springboot jar包配置为linux中的服务形式，便于管理。 示例 在/etc/systemd/system目录下创建deploy</description>
+    </item>
+    
+    <item>
+      <title>Linux 常用命令</title>
+      <link>https://huayuye.github.io/blog/2021/12/linux-command/</link>
+      <pubDate>Mon, 13 Dec 2021 14:18:47 +0800</pubDate>
+      
+      <guid>https://huayuye.github.io/blog/2021/12/linux-command/</guid>
+      <description>系统信息 arch 显示机器的处理器架构 uname -m 显示机器的处理器架构 uname -r 显示正在使用的内核版本 dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI) hdparm -i /dev/hda 罗列一个磁盘的架构特性 hdparm -tT</description>
+    </item>
+    
+    <item>
       <title>Springboot Rabbitmq</title>
       <link>https://huayuye.github.io/blog/2021/12/springboot-rabbitmq/</link>
       <pubDate>Wed, 08 Dec 2021 10:42:14 +0800</pubDate>
@@ -171,24 +189,6 @@
       
       <guid>https://huayuye.github.io/blog/2021/11/binary-convert/</guid>
       <description>关于本人之前遇到的一个位运算问题，简单的作了下分析，如有错误，望指正。 /** * 二进制 逢二进一 * 八进制 逢八进一 * 十进制 逢十进一 * 十六进制 逢十六进一</description>
-    </item>
-    
-    <item>
-      <title>Mybatis Where的坑</title>
-      <link>https://huayuye.github.io/blog/2021/11/mybatis-where/</link>
-      <pubDate>Thu, 25 Nov 2021 18:20:06 +0800</pubDate>
-      
-      <guid>https://huayuye.github.io/blog/2021/11/mybatis-where/</guid>
-      <description>mybatis where 标签的一个小坑，被我踩下去了. 为什么我会踩这个坑，只是因为我在模糊查询时，不想使用${},而使用另一个标签。 标签的作用就是将 传过来的参数</description>
-    </item>
-    
-    <item>
-      <title>Gradle Vm</title>
-      <link>https://huayuye.github.io/blog/2021/11/gradle-vm/</link>
-      <pubDate>Thu, 25 Nov 2021 09:46:00 +0800</pubDate>
-      
-      <guid>https://huayuye.github.io/blog/2021/11/gradle-vm/</guid>
-      <description>之前因为每次idea加载项目都初始化index等时，gradle一致提示内存空间不足，于是就对gradle进行了配置 配置 1、需要在gradl</description>
     </item>
     
   </channel>
